@@ -1,15 +1,12 @@
-package com.spacecl.shop;
+package com.spacecl.shop.item;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -93,6 +90,13 @@ public class ItemController {
         itemService.editItem(id, title, price);
         return "redirect:/list";
     }
+
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity<String> del(@PathVariable Long id){
+        itemService.deleteItem(id);
+        return ResponseEntity.status(200).body("삭제완료");
+    }
+
 
 //    @ExceptionHandler(Exception.class)
 //    public ResponseEntity<String> errorHandler(){

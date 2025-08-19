@@ -1,4 +1,4 @@
-package com.spacecl.shop;
+package com.spacecl.shop.item;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -59,5 +59,17 @@ public class ItemService {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void deleteItem(Long id){
+        if(id == null){
+            throw new IllegalArgumentException("해당 id가 존재하지 않습니다");
+        }
+
+        try{
+            itemRepository.deleteById(id);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

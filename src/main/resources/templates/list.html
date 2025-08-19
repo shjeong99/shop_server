@@ -18,9 +18,18 @@
         <h4 th:text="${item.title}"></h4>
         <a th:href="@{'/detail/' + ${item.id} }">상세</a>
         <a th:href="@{'/modify/' + ${item.id} }">수정</a>
+        <button th:onclick="'deleteItem(' + ${item.id} + ')'">삭제</button>
         <p th:text="${item.price + '원'}"></p>
     </div>
 </div>
 
 </body>
+
+<script>
+    function deleteItem(id){
+        fetch(`/del/${id}`, { method: 'DELETE' })
+            // .then(() => location.reload()) // 삭제 후 새로고침
+            // .catch(err => console.error(err));
+    }
+</script>
 </html>

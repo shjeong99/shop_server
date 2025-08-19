@@ -1,4 +1,4 @@
-package com.spacecl.shop;
+package com.spacecl.shop.item;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
