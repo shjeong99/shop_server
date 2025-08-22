@@ -2,6 +2,7 @@ package com.spacecl.shop.item;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -95,6 +96,13 @@ public class ItemController {
     public ResponseEntity<String> del(@PathVariable Long id){
         itemService.deleteItem(id);
         return ResponseEntity.status(200).body("삭제완료");
+    }
+
+    @GetMapping("/test")
+    String deleteItem(){
+     var result = new BCryptPasswordEncoder().encode("123456");
+     System.out.println(result);
+        return "test";
     }
 
 
